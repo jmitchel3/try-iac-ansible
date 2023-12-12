@@ -1,0 +1,14 @@
+- name: Install & Configure NGINX
+  hosts: all
+  become: true
+  var_files
+  tasks:
+    - name: Install NGINX
+      apt:
+        name: nginx
+        update_cache: yes
+        state: present
+    - name: Create HTML File
+      copy:
+        dest: /var/www/html/index.html
+        src: "{{ inventory_dir }}/basics/hello-world-from-basics-dir.html"

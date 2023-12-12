@@ -1,0 +1,16 @@
+- hosts: webapps
+  become: true
+  tasks:
+    - name: Install NGINX
+      apt:
+        name: nginx
+        update_cache: yes
+        state: present
+    - name: Debug
+      debug:
+        msg: "{{ secret_name }}"
+      when: secret_name is defined
+    - name: Root Index
+      template:
+        dest: /var/www/html/index.html
+        src: "{{ inventory_dir }}/templates/webserver.html.jinja2"

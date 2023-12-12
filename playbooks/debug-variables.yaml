@@ -1,0 +1,36 @@
+- name: Debug Vars Playbook
+  hosts: all
+  become: true
+  vars:
+    this_is_my: "First variable" 
+    this_is_my_list: 
+      - List
+      - of
+      - items
+    this_is_my_other_list: [ "List", "of", "other", "items"]
+    my_mapping:
+      a_new: value1
+      b_key: value2
+      c_grade: value3
+  tasks:
+    - name: Debug Variable
+      debug:
+        msg: "value: {{ this_is_my }}"
+    - name: Debug Variable List
+      debug:
+        msg: "value: {{ item }}"
+      loop: "{{ this_is_my_list }}"
+    - name: Debug Variable Other List (Old Method)
+      debug:
+        msg: "value: {{ item }}"
+      with_items: "{{ this_is_my_other_list }}"
+    - name: Debug Dictionary with Key-Value pair output
+      debug:
+        msg: "key: {{ item.key }}, value: {{ item.value }}"
+      loop: "{{ lookup('dict', my_mapping) }}"
+    - name: List with Index value 
+      debug:
+        msg: "List index {{ ansible_loop.index }} and value: {{ item }}"
+      loop:  "{{ this_is_my_other_list }}"
+      loop_control:
+          extended: true

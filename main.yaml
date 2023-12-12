@@ -1,0 +1,4 @@
+- name: Run HTML Webapp Playbook
+  import_playbook: ./playbooks/html-webapps.yaml
+- name: Run Docker Webapp Playbook
+  import_playbook: ./playbooks/docker-webapps.yaml
