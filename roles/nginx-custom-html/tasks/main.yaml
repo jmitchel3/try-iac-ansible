@@ -1,0 +1,10 @@
+- name: Install Nginx
+  apt:
+    name: nginx
+    state: present
+    update_cache: yes
+
+# - name: Custom NGINX Homepage
+#   template:
+#     dest: /var/www/html/index.html
+#     src: custom-nginx-homepage.html.jinja2

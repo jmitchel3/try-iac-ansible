@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hello World from Try IaC</title>
+  </head>
+  <body>
+    <h1>Custom NGINX Page from Ansible Role</h1>
+    <h2>Hello World Again from {{ inventory_hostname }}</h1>
+    <p>With Ansible</p>
+    <p>& External Files</p>
+    <p>& Templates</p>
+    <p>& the following Variables:</p>
+    <div>
+        <ul>
+            <li>User: {{ ansible_user }}</li>
+            <li>Host: {{ inventory_hostname }}</li>
+        </ul>
+    </div>
+  </body>
+</html>

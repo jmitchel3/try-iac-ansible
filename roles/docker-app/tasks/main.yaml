@@ -1,0 +1,22 @@
+- name: Clone Repo from Variable
+  git:
+    repo: "{{ repo }}"
+    dest: "{{ remote_dir_destination }}"
+    force: yes
+    update: yes
+
+- name: Pull Latest Docker Image
+  shell:
+    cmd: docker compose -f {{ compose_file_path }} pull
+    chdir: "{{ remote_dir_destination }}"
+    executable: /bin/bash
+
+- name: Start Docker Compose
+  shell:
+    cmd: docker compose -f {{ compose_file_path }} up -d
+    chdir: "{{ remote_dir_destination }}"
+    executable: /bin/bash
+
+- name: Open Remote
+  debug:
+    msg: "View app at http://{{ inventory_hostname }}:{{ exposed_app_port }}"

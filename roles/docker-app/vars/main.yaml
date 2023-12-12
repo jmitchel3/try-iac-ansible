@@ -1,0 +1,4 @@
+repo: https://github.com/codingforentrepreneurs/iac-python
+compose_file_path: compose.prod.yaml
+remote_dir_destination: /var/www/app/
+exposed_app_port: 8080

@@ -1,14 +1,6 @@
 - name: Webapps Vars File Task
   hosts: docker_webapps
   become: true
-  vars_files:
-    - "{{ inventory_dir }}/vars/webapps.yaml"
-  tasks:
-    - name: Clone Repo From Variable
-      git:
-        repo: "{{ iac_python_web_app_example }}"
-        dest: /var/www/webapp/
-        update: yes
-    - name: Reference Code
-      debug:
-        msg: "This chapter's reference code is {{ try_iac_ansible_github_repo }}"
+  roles:
+    - docker-install
+    - docker-app
