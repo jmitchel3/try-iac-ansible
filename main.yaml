@@ -3,3 +3,6 @@
   
 - name: Run Docker Webapp Playbook
   import_playbook: ./playbooks/docker-webapps.yaml
+
+- name: Run Load Balancer Configuration Playbook
+  import_playbook: ./playbooks/load-blancer.yaml

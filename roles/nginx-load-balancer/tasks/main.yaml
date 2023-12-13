@@ -1,0 +1,19 @@
+- name: Install Nginx
+  apt:
+    name: nginx
+    state: latest
+    update_cache: yes
+
+- name: Configure Nginx
+  template:
+    src: nginx.conf.jinja2
+    dest: /etc/nginx/nginx.conf
+  notify: reload nginx
+
+- name: Output Config
+  shell: cat /etc/nginx/nginx.conf
+  register: file_content
+
+- name: Debug Output
+  debug:
+    var: file_content.stdout
