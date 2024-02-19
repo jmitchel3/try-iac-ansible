@@ -1,0 +1,16 @@
+# ansible playbook
+- name: Install Nginx Play
+  hosts: all
+  become: true
+  tasks:
+    - name: Install Nginx Task
+      apt:
+        name: nginx
+        update_cache: true
+        state: present
+    - name: Create HTML File
+      copy:
+        dest: /var/www/html/index.html
+        content: >
+          <h1>Try Infrastructure as Code</h1>
+          <p>With Ansible</p>
