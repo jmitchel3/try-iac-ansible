@@ -1,0 +1,10 @@
+# ansible playbook
+- name: Install Nginx Play
+  hosts: all
+  become: true
+  tasks:
+    - name: Install Nginx Task
+      apt:
+        name: nginx
+        update_cache: true
+        state: present
