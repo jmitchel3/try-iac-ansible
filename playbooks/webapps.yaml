@@ -1,0 +1,12 @@
+- name: Config Webapps Play
+  hosts: webapps
+  vars:
+    iac_python_web_app_example: https://github.com/codingforentrepreneurs/iac-python
+  vars_files:
+    - "{{ inventory_dir }}/vars/webapps.yaml"
+  tasks:
+    - name: Clone Repo
+      git:
+        repo: "{{ iac_python_web_app_example }}"
+        dest: /var/www/webapp/
+        update: yes
