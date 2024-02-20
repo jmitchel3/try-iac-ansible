@@ -1,0 +1,19 @@
+---
+# handlers file for nginx-load-balancer
+- name: start-nginx-lb-handler
+  systemd_service:
+    name: nginx
+    state: started
+    enabled: true
+
+- name: restart-nginx-lb-handler
+  systemd_service:
+    name: nginx
+    state: restarted
+    enabled: true
+
+- name: reload-nginx-lb-handler
+  systemd_service:
+    name: nginx
+    state: reloaded
+    enabled: true

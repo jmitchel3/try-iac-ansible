@@ -5,14 +5,14 @@
   vars:
     my_name: JUSTIN
   roles:
-    - nginx-install
-  tasks:
-    # - name: Install Nginx Task
-    #   apt:
-    #     name: nginx
-    #     update_cache: true
-    #     state: present
-    - name: Create HTML File
-      template:
-        dest: /var/www/html/index.html
-        src: "{{ inventory_dir }}/basics/hello-world-vars.html.jinja"
+    - nginx-load-balancer
+  # tasks:
+  #   # - name: Install Nginx Task
+  #   #   apt:
+  #   #     name: nginx
+  #   #     update_cache: true
+  #   #     state: present
+  #   - name: Create HTML File
+  #     template:
+  #       dest: /var/www/html/index.html
+  #       src: "{{ inventory_dir }}/basics/hello-world-vars.html.jinja"
