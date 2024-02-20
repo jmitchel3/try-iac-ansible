@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hello World from Try IaC</title>
+  </head>
+  <body>
+    <h1>Hello {% if my_name|lower == "justin" %}{{ my_name|title }}{% else %}There{% endif %} from Try IaC {{ inventory_hostname }}</h1>
+    <p>With Ansible</p>
+    <p>& External Files</p>
+  </body>
+</html>
