@@ -6,7 +6,8 @@
   vars_files:
     - "{{ inventory_dir }}/vars/webapps.yaml"
   roles:
-    - nginx-install
+    - nginx-uninstall
+    - docker-install
   tasks:
     - name: Clone Repo
       git:
