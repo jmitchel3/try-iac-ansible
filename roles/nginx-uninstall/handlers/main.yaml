@@ -1,0 +1,5 @@
+- name: Stop Nginx Service
+  systemd_service:
+    name: nginx
+    state: stopped
+    enabled: true

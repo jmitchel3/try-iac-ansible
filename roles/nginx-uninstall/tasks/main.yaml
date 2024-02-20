@@ -3,3 +3,4 @@
     name: nginx
     update_cache: true
     state: absent
+  notify: Stop Nginx Service
