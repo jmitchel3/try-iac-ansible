@@ -4,6 +4,8 @@
     iac_python_web_app_example: https://github.com/codingforentrepreneurs/iac-python
   vars_files:
     - "{{ inventory_dir }}/vars/webapps.yaml"
+  roles:
+    - nginx-uninstall
   tasks:
     - name: Clone Repo
       git:
