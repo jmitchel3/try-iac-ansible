@@ -1,0 +1,5 @@
+- name: Configure Webapps
+  import_playbook: playbooks/1-webapps.yaml
+
+- name: Configure Load Balancer
+  import_playbook: playbooks/2-load_balancer.yaml

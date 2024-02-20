@@ -1,0 +1,16 @@
+# ansible playbook
+- name: Install Nginx Play
+  hosts: load_balancer
+  become: true
+  vars:
+    my_name: JUSTIN 
+  tasks:
+    - name: Install Nginx Task
+      apt:
+        name: nginx
+        update_cache: true
+        state: present
+    - name: Create HTML File
+      template:
+        dest: /var/www/html/index.html
+        src: "{{ inventory_dir }}/basics/hello-world-vars.html.jinja"
