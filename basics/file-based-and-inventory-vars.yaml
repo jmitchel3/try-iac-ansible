@@ -1,0 +1,19 @@
+# ansible playbook
+- name: File-based & Inventory Vars + Nginx Play
+  hosts: all
+  become: true
+  vars: 
+    short_name: "some name"
+    my_name: "some other name"
+  vars_files:
+    - "{{ inventory_dir }}/basics/file-vars-sample.yaml"
+  tasks:
+    - name: Install Nginx Task
+      apt:
+        name: nginx
+        update_cache: true
+        state: present
+    - name: Create HTML File
+      template:
+        dest: /var/www/html/index.html
+        src: "{{ inventory_dir }}/basics/file-based-vars.html.jinja"
