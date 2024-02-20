@@ -4,15 +4,8 @@
   become: true
   vars:
     my_name: JUSTIN
-  roles:
-    - nginx-load-balancer
-  # tasks:
-  #   # - name: Install Nginx Task
-  #   #   apt:
-  #   #     name: nginx
-  #   #     update_cache: true
-  #   #     state: present
-  #   - name: Create HTML File
-  #     template:
-  #       dest: /var/www/html/index.html
-  #       src: "{{ inventory_dir }}/basics/hello-world-vars.html.jinja"
+  tasks:
+    - name: Apply NGINX LB Role
+      include_role:
+        name: nginx-load-balancer
+        vars_from: docker.yml # nginx-load-balancer/vars/

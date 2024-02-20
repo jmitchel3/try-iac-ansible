@@ -1,7 +1,11 @@
 upstream myproxy {
-    {% for host in groups['webapps'] %}
-        server {{ host }}:80;
-    {% endfor %}
+{% for host in groups['webapps'] %}
+    {% if hostvars[host].get('port') %}
+        server {{ host }}:{{ hostvars[host].get('port') }};
+    {% else %}
+        server {{ host }}:{{ upstream_proxy_port }};
+    {% endif %}
+{% endfor %}
 }
 
 server {
