@@ -8,4 +8,4 @@
     - name: Apply NGINX LB Role
       include_role:
         name: nginx-load-balancer
-        vars_from: docker.yml # nginx-load-balancer/vars/
+        vars_from: cfe-nginx-docker.yml # nginx-load-balancer/vars/

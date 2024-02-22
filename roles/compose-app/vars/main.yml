@@ -1,0 +1,5 @@
+---
+# vars file for compose-app
+repo: https://github.com/codingforentrepreneurs/iac-python
+dest: /var/www/webapp/
+compose_fname: compose.prod.yaml

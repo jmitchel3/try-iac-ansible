@@ -1,0 +1,19 @@
+---
+# tasks file for compose-app
+- name: Clone Repo
+  git:
+    repo: "{{ repo }}"
+    dest: "{{ dest }}"
+    update: yes
+
+- name: Docker Image Pull
+  shell:
+    cmd: docker compose -f {{ compose_fname }} pull
+    chdir: "{{ dest }}"
+    executable: /bin/bash
+
+- name: Docker Run Compose
+  shell:
+    cmd: docker compose -f {{ compose_fname }} up -d
+    chdir: "{{ dest }}"
+    executable: /bin/bash

@@ -1,0 +1,5 @@
+---
+# vars file for compose-app
+repo: https://github.com/codingforentrepreneurs/cfe-nginx
+dest: /var/www/cfe-nginx/
+compose_fname: compose.yaml

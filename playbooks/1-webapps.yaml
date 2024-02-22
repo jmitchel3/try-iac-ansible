@@ -1,25 +1,16 @@
 - name: Config Webapps Play
   hosts: webapps
-  vars:
-    iac_python_web_app_example: https://github.com/codingforentrepreneurs/iac-python
-    my_name: "Ansible"
-  vars_files:
-    - "{{ inventory_dir }}/vars/webapps.yaml"
   roles:
     - docker-install
+    # - compose-app
+  # tasks:
   tasks:
-    - name: Clone Repo
-      git:
-        repo: "{{ iac_python_web_app_example }}"
-        dest: /var/www/webapp/
-        update: yes
-    - name: Docker Run Compose
+    - name: CFE Nginx App
+      include_role:
+        name: compose-app
+        vars_from: cfe-nginx.yml
+    - name: Docker Stop Compose
       shell:
-        cmd: docker compose -f compose.prod.yaml up -d
+        cmd: docker compose -f compose.prod.yaml down --rmi all --remove-orphans
         chdir: /var/www/webapp/
         executable: /bin/bash
-    # - name: Docker Stop Compose
-    #   shell:
-    #     cmd: docker compose -f compose.prod.yaml down --rmi all --remove-orphans
-    #     chdir: /var/www/webapp/
-    #     executable: /bin/bash
